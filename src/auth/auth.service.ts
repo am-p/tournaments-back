@@ -19,11 +19,11 @@ export class AuthService {
     }
   }
 
-  // This part is for the Passport thing that I copied from the Docu
+  // This part is for the Passport thing that I copied from the Documentation and it use by local.strategy
   async validateUser(username: string, pass: string): Promise<any> {
+   
     const user = await this.usersService.findOne(username);
-    console.log('que le pasa al suth service', user);
-    if (user && user.password === pass) {
+    if (user.password === pass) {
       const { password, ...result } = user;
       return result;
     }
